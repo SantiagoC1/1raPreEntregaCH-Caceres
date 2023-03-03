@@ -34,7 +34,7 @@ let cantCli = 0, totalVendido = 0, i = 0,totalVenta=0;
         {tipo:"bordado",nombre:"nube", precio:14500,stock:50},
         {tipo:"bordado",nombre:"mariposa", precio:14500,stock:50},
         {tipo:"bordado",nombre:"corona", precio:14500,stock:50},];
-    const carrito = [];
+    let carrito = [];
 
 //Programa pricipal    
 let nombre = prompt("Ingrese su nombre");
@@ -73,6 +73,7 @@ while (nombre !== "zzz") {
         alert(`Gracias por visitarnos ${nombre}`);
     }
     nombre = prompt("Ingrese su nombre");
+    carrito = [];
 }
 //Funcion que muestra los productos del tipo seleccionado
 function mostrar (tipo){
