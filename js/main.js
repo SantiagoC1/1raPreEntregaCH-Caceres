@@ -73,6 +73,7 @@ while (nombre !== "zzz") {
         alert(`Gracias por visitarnos ${nombre}`);
     }
     nombre = prompt("Ingrese su nombre");
+    totalVenta=0;
     carrito = [];
 }
 //Funcion que muestra los productos del tipo seleccionado
