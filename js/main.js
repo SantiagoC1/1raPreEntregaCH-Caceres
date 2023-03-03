@@ -1,7 +1,7 @@
 const clave = "kefla2023";
 let cantCli = 0, totalVendido = 0, i = 0,totalVenta=0;
     const pagos = [
-        {metodo:"efectivo",funcion:0.1},
+        {metodo:"efectivo",funcion:-0.1},
         {metodo:"transferencia",funcion:0},
         {metodo:"mercado pago",funcion:0.2},
         {metodo:"2 cuotas",funcion:0.24},
@@ -26,7 +26,7 @@ let cantCli = 0, totalVendido = 0, i = 0,totalVenta=0;
         {tipo:"liso",nombre:"celeste",precio:11000,stock:50},
         {tipo:"liso",nombre:"violeta",precio:11000,stock:50},
         {tipo:"liso",nombre:"cremita",precio:11000,stock:50},
-        {tipo:"liso",nombre:"verdeagua",precio:11000,stock:50},
+        {tipo:"liso",nombre:"lila",precio:11000,stock:50},
     
         {tipo:"bordado",nombre:"rosa", precio:14500,stock:50},
         {tipo:"bordado",nombre:"trueno", precio:14500,stock:50},
@@ -43,38 +43,35 @@ while (nombre !== "zzz") {
     if (nombre === "admin") {
         let contrasenia = prompt("Ingrese su contraseña");
         if (contrasenia === clave) {
-            alert("Usted accedio a la parte de administrador");
-            //hacer acciones que se puedan modificar los objetos
+            alert("Usted accedio a la parte de administrador (todavia en desarrollo)");
+            //hacer acciones que se puedan modificar los objetos, stock precios,productos
         }
     }else {
         alert(`Bienvenido ${nombre} a KEFLA.\n  Somos una empresa que se dedica a la fabricacion de buzos`);
         let compra = prompt("Quiere realizar una compra?\n-Si \n-No");
-        while (compra === "si"){
+        while (compra.toLowerCase() === "si"){
             let tipo = prompt("que tipo de buzo le gustaria comprar\n-Estampado\n-Liso\n-Bordado");
             mostrar(tipo.toLowerCase());
             let modelo = prompt("Habiendo visto nuestros modelos, Cual le gustaria comprar?");
-            let item = buzo.find(item => item.nombre === modelo);
+            let item = buzo.find(item => item.nombre === modelo.toLowerCase());
             carrito.push(item);
             i=buzo.indexOf(item);
             buzo[i].stock=buzo[i].stock -1;
+            totalVenta+=buzo[i].precio;
             let msj="";
             for (const prod of carrito){
                 let header =`${nombre} este es tu CARRITO:\n`;
                 msj += ` Nombre:${prod.nombre}\n Precio:$${prod.precio}\n`;
                 alert(header+msj);
             }
-            for (const producto of carrito){
-                totalVenta=totalVenta+ producto.precio;
-            }
-            alert(`$${totalVenta}`);
             compra = prompt("Quiere realizar otra compra?\n-Si \n-No");
         }
-        //obtener el valor total de lo comprado por el cliente 
-        //funcion de metodo de pago pasandole el parametro del total de la compra
+        alert(`El total a pagar es de $${totalVenta}`);
+        alert(`Nuestros metodos de pago son:\n-Efectivo 10%OFF\n-Tranferecia\nMercado Pago +20%\n-2 Cuotas\n-3 Cuotas\n-6 Cuotas\n-12 Cuotas`);
+        let metodo = prompt("Con que metodo de pago le gustaria pagar?");
+        metodos(metodo,totalVenta);
         alert(`Gracias por visitarnos ${nombre}`);
     }
-    //cantCli++; sumo el cliente
-    //totalVendido=totalVendido+total //sumo la cantidad total de lo vendido entre todas las ventas
     nombre = prompt("Ingrese su nombre");//
 }
 //Funcion que muestra los productos del tipo seleccionado
@@ -88,4 +85,10 @@ function mostrar (tipo){
         `;
         alert(mensaje);
     });
+}
+function metodos (metodo,valor){
+    let encontre = pagos.find(item => item.metodo === metodo);
+    recargo=encontre.funcion;
+    valor=valor + (valor*recargo);
+    alert(`El total a pagar con el metodo de pago ${metodo} es de $${valor}`);
 }
