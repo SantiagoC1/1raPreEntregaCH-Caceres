@@ -71,9 +71,10 @@ while (nombre !== "zzz") {
         let metodo = prompt("Con que metodo de pago le gustaria pagar?");
         metodos(metodo.toLowerCase(),totalVenta);
         alert(`Gracias por visitarnos ${nombre}`);
+        totalVenta=0;
     }
     nombre = prompt("Ingrese su nombre");
-    totalVenta=0;
+    
     carrito = [];
 }
 //Funcion que muestra los productos del tipo seleccionado
