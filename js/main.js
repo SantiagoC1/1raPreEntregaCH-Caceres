@@ -67,12 +67,12 @@ while (nombre !== "zzz") {
             compra = prompt("Quiere realizar otra compra?\n-Si \n-No");
         }
         alert(`El total a pagar es de $${totalVenta}`);
-        alert(`Nuestros metodos de pago son:\n-Efectivo 10%OFF\n-Tranferecia\nMercado Pago +20%\n-2 Cuotas\n-3 Cuotas\n-6 Cuotas\n-12 Cuotas`);
+        alert(`Nuestros metodos de pago son:\n-Efectivo 10%OFF\n-Tranferecia\n-Mercado Pago +20%\n-2 Cuotas\n-3 Cuotas\n-6 Cuotas\n-12 Cuotas`);
         let metodo = prompt("Con que metodo de pago le gustaria pagar?");
-        metodos(metodo,totalVenta);
+        metodos(metodo.toLowerCase(),totalVenta);
         alert(`Gracias por visitarnos ${nombre}`);
     }
-    nombre = prompt("Ingrese su nombre");//
+    nombre = prompt("Ingrese su nombre");
 }
 //Funcion que muestra los productos del tipo seleccionado
 function mostrar (tipo){
