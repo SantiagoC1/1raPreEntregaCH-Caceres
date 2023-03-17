@@ -6,10 +6,12 @@
 
 
 //components 
-
+@import "./components/modal.scss";
+@import "./components/cards.scss";
 
 // layout footer header
-
+@import "./layout/footer";
+@import "./layout/header.scss";
 
 //views 
 @import "./views/home.scss";

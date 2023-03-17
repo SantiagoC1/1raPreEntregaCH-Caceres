@@ -1,97 +1,92 @@
-const clave = "kefla2023";
-let cantCli = 0, totalVendido = 0, i = 0,totalVenta=0;
-    const pagos = [
-        {metodo:"efectivo",funcion:-0.1},
-        {metodo:"transferencia",funcion:0},
-        {metodo:"mercado pago",funcion:0.2},
-        {metodo:"2 cuotas",funcion:0.24},
-        {metodo:"3 cuotas",funcion:0.43},
-        {metodo:"6 cuotas",funcion:0.76},
-        {metodo:"12 cuotas",funcion:0.82},
-    ];
-    const buzo = [
-        {tipo:"estampado",nombre:"bys", precio:14200,stock:50},
-        {tipo:"estampado",nombre:"moodg", precio:15499,stock:50},
-        {tipo:"estampado",nombre:"princess", precio:13499,stock:50},
-        {tipo:"estampado",nombre:"bluewave", precio:15499,stock:50},
-        {tipo:"estampado",nombre:"clow", precio:14499,stock:50},
-        {tipo:"estampado",nombre:"happycake", precio:15000,stock:50},
-        {tipo:"estampado",nombre:"bekind", precio:17000,stock:50},
-        {tipo:"estampado",nombre:"tyv", precio:15000,stock:50},
-    
-        {tipo:"liso",nombre:"verde",precio:11000,stock:50},
-        {tipo:"liso",nombre:"rojo",precio:11000,stock:50},
-        {tipo:"liso",nombre:"marino",precio:11000,stock:50},
-        {tipo:"liso",nombre:"azul",precio:11000,stock:50},
-        {tipo:"liso",nombre:"celeste",precio:11000,stock:50},
-        {tipo:"liso",nombre:"violeta",precio:11000,stock:50},
-        {tipo:"liso",nombre:"cremita",precio:11000,stock:50},
-        {tipo:"liso",nombre:"lila",precio:11000,stock:50},
-    
-        {tipo:"bordado",nombre:"rosa", precio:14500,stock:50},
-        {tipo:"bordado",nombre:"trueno", precio:14500,stock:50},
-        {tipo:"bordado",nombre:"pez", precio:14500,stock:50},
-        {tipo:"bordado",nombre:"nube", precio:14500,stock:50},
-        {tipo:"bordado",nombre:"mariposa", precio:14500,stock:50},
-        {tipo:"bordado",nombre:"corona", precio:14500,stock:50},];
-    let carrito = [];
-
-//Programa pricipal    
-let nombre = prompt("Ingrese su nombre");
-
-while (nombre !== "zzz") {
-    if (nombre === "admin") {
-        let contrasenia = prompt("Ingrese su contraseña");
-        if (contrasenia === clave) {
-            alert("Usted accedio a la parte de administrador (todavia en desarrollo)");
-            //hacer acciones que se puedan modificar los objetos, stock precios,productos
-        }
-    }else {
-        alert(`Bienvenido ${nombre} a KEFLA.\n  Somos una empresa que se dedica a la fabricacion de buzos`);
-        let compra = prompt("Quiere realizar una compra?\n-Si \n-No");
-        while (compra.toLowerCase() === "si"){
-            let tipo = prompt("que tipo de buzo le gustaria comprar\n-Estampado\n-Liso\n-Bordado");
-            mostrar(tipo.toLowerCase());
-            let modelo = prompt("Habiendo visto nuestros modelos, Cual le gustaria comprar?");
-            let item = buzo.find(item => item.nombre === modelo.toLowerCase());
-            carrito.push(item);
-            i=buzo.indexOf(item);
-            buzo[i].stock=buzo[i].stock -1;
-            totalVenta+=buzo[i].precio;
-            let msj="";
-            for (const prod of carrito){
-                let header =`${nombre} este es tu CARRITO:\n`;
-                msj += ` Nombre:${prod.nombre}\n Precio:$${prod.precio}\n`;
-                alert(header+msj);
-            }
-            compra = prompt("Quiere realizar otra compra?\n-Si \n-No");
-        }
-        alert(`El total a pagar es de $${totalVenta}`);
-        alert(`Nuestros metodos de pago son:\n-Efectivo 10%OFF\n-Tranferecia\n-Mercado Pago +20%\n-2 Cuotas\n-3 Cuotas\n-6 Cuotas\n-12 Cuotas`);
-        let metodo = prompt("Con que metodo de pago le gustaria pagar?");
-        metodos(metodo.toLowerCase(),totalVenta);
-        alert(`Gracias por visitarnos ${nombre}`);
-        totalVenta=0;
-    }
-    nombre = prompt("Ingrese su nombre");
-    
-    carrito = [];
-}
-//Funcion que muestra los productos del tipo seleccionado
-function mostrar (tipo){
-    let encontre = buzo.filter(item => item.tipo === tipo);
-    encontre.forEach(item =>{
-        let mensaje = `BUZOS ${tipo}s:\n
-        Nombre: ${item.nombre}
-        Precio: $${item.precio}
-        Stock: ${item.stock}
-        `;
-        alert(mensaje);
+//PROGRAMA
+let carrito=[];
+const contenedorProductos = document.getElementById('contenedor-productos');
+const contenedorCarrito = document.getElementById('carrito-contenedor');
+const botonVaciar = document.getElementById('vaciar-carrito');
+const contadorCarrito = document.getElementById('contadorCarrito');
+const precioTotal = document.getElementById('precioTotal');
+const cantidadTotal = document.getElementById('cantidadTotal');
+//sube el producto seleccionado al localStorage. En otras palabras carga el carrito en el LS
+document.addEventListener('DOMContentLoaded', () => {
+    if (localStorage.getItem('carrito')){
+        carrito = JSON.parse(localStorage.getItem('carrito'));
+        actualizarCarrito();
+    };
+});
+//Boton de vaciar carrito
+botonVaciar.addEventListener('click', () => {
+    carrito.length = 0;
+    localStorage.clear();
+    actualizarCarrito();
+    precioTotal.innerText=0;
+    reset(buzo);
+});
+//actualiza el DOM con los productos
+buzo.forEach((prod) => 
+{
+    const div = document.createElement('div');
+    div.classList.add('producto');
+    div.innerHTML = `
+    <img src="${prod.img}" alt "">
+    <h3>${prod.nombre}</h3>
+    <p>${prod.descripcion}</p>
+    <b class="PrecioProducto">Precio:$${prod.precio}</b>
+    <br>
+    <button id="agregar${prod.id}" class="boton-agregar">Agregar</button> 
+    `;
+    contenedorProductos.appendChild(div);
+//Se setea el boton para agregar el producto al carrito
+    const boton = document.getElementById(`agregar${prod.id}`);
+    boton.addEventListener('click', () => {
+        agregarAlCarrito(prod.id);
     });
-}
-function metodos (metodo,valor){
-    let encontre = pagos.find(item => item.metodo === metodo);
-    recargo=encontre.funcion;
-    valor=valor + (valor*recargo);
-    alert(`El total a pagar con el metodo de pago ${metodo} es de $${valor}`);
-}
+});
+//FUNCION AGREGAR AL CARRITO
+const agregarAlCarrito = (prodId) => 
+{
+    const existe = carrito.some (prod => prod.id === prodId);
+    if (existe){
+        const item = buzo.find((prod) => prod.id === prodId);
+        item.cantidad++;
+        item.stock-= 1;
+        actualizarCarrito();
+    }else{
+        const item = buzo.find((prod) => prod.id === prodId);
+        item.cantidad++;
+        carrito.push(item);
+        item.stock=item.stock - item.cantidad;
+        actualizarCarrito();
+    }
+};
+//FUNCION ELIMINAR PRODUCTO DEL CARRITO\
+const eliminarDelCarrito = (prodId) => {
+    const item = carrito.find((prod) => prod.id === prodId);
+    const indice = carrito.indexOf(item) 
+    carrito.splice(indice, 1) ;
+    item.cantidad=0;
+    indice===0&&localStorage.clear();//Hice esto pq tenia el problema de que el ultimo elemento del carrito no se borraba
+    precioTotal.innerText=0;
+    actualizarCarrito();
+};
+//FUNCION ACTUALIZAR CARRITO
+const actualizarCarrito = () => {let precio = 0;
+    contenedorCarrito.innerHTML = "";
+    carrito.forEach((prod) => {
+        const div = document.createElement('div');
+        div.className = ('productoEnCarrito');
+        div.innerHTML = `
+        <p>${prod.nombre}</p>
+        <p>Precio:$${prod.precio}</p>
+        <b>${prod.cantidad}</b>
+        <button onclick="eliminarDelCarrito(${prod.id})" class="boton-eliminar"><i class="fas fa-trash-alt"></i></button>`;
+        precio =(precio + (prod.cantidad * prod.precio))
+        contenedorCarrito.appendChild(div);
+        localStorage.setItem('carrito', JSON.stringify(carrito));
+    });
+    precioTotal.innerText=precio;
+    contadorCarrito.innerText = carrito.length;
+};
+//Resetea la cantidad de productos dentro del carrito
+const reset =(item)=>{
+    item.forEach(prod => prod.cantidad =0);
+};

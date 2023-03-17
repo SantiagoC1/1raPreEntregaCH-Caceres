@@ -1,0 +1,39 @@
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 10%;
+    box-shadow: 0px 5px 4px 3px rgba(54, 36, 36, 0.911);
+    margin-bottom: 20px;
+    background-color: #0E0808;
+    h1 {
+        color: #E4E0E0;
+        text-transform: uppercase;
+        font-weight: 700;
+        font-size: 50px;
+    };
+    #boton-carrito {
+        border: none;
+        color: #745A5A;
+        font-size: 40px;
+        background-color: #0E0808;
+        border-radius: 50%;
+        padding: 10px 20px;
+        transition: all .3s;
+    };
+    #boton-carrito:hover {
+        cursor: pointer;
+        color: #0E0808;
+        background-color: #745A5A;
+    };
+    #boton-carrito:focus {
+        outline: none;
+    };
+    #contenedor-productos {
+        max-width: 1200px;
+        margin: 60px auto;
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+    };
+};

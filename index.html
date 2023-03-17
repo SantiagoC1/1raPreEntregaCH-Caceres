@@ -4,30 +4,43 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/main.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel&family=IM+Fell+Great+Primer+SC&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/c0aefa785b.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="./css/main.css">
+    <!-- <script src="./js/stock.js"></script> -->
+    <!-- <script src="./js/modal.js"></script> -->
     
-    <title>Document</title>
+    <title>KEFLA</title>
 </head>
 <body>
     <header>
-        
-
+        <h1 id="titulo" class="titulo">KEFLA</h1>
+        <button id="boton-carrito"><i class="fas fa-shopping-cart"></i><span id="contadorCarrito">0</span></button>
     </header>
-    <main>
-        <section id="hero">
-            <h1 class="hero__title">KEFLA</h1>
-            <h3 class="hero__subtitle">futuramente un e-commerce</h3>
-        </section>
-        
-    </main>
 
-    <footer>
-        
-    </footer>
-    
+    <select id="filtroTalle">
+        <option value="all">Todos</option>
+        <option class="filter-item " data-filter="estampado">Estampado</option>
+        <option class="filter-item " data-filter="liso">Liso</option>
+        <option class="filter-item " data-filter="bordado">Bordado</option>
+    </select>
+<!-- cambiar a filtro tipos -->
+
+    <main id="contenedor-productos">
+
+    </main>
+    <div class="modal-contenedor">
+        <div class="modal-carrito">
+            <h3>Carrito</h3>
+            <button id="carritoCerrar"><i class="fas fa-times-circle"></i></button>
+            <div id="carrito-contenedor">
+                
+            </div>
+            <p class="precioProducto">Precio total: $<span id="precioTotal">0</span></p>
+            <button id="vaciar-carrito" class="boton-agregar">Vaciar carrito</button>
+        </div>
+    </div>
+    <script src="./js/modal.js"></script>
+    <script src="./js/stock.js"></script>
     <script src="./js/main.js"></script>
 </body>
 </html>
