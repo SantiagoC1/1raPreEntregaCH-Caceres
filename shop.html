@@ -28,44 +28,44 @@
         </div>
         <button id="boton-carrito"><i class="fas fa-shopping-cart"></i><span id="contadorCarrito">0</span></button>
     </header>
-<!-- hacer carrusel -->
-<!-- hacer parte de productos destacados -->
-<!-- hacer una card de edicion limitada -->
-<!-- hacer un formulario para recibir noticias -->
-<!-- poner las redes sociales -->
-
-<!-- ModalCarrito -->
-<div class="modal-contenedor">
+    <select id="filtroTalle">
+        <option value="todos">Todos</option>
+        <option value="estampado">Estampado</option>
+        <option value="liso">Liso</option>
+        <option value="bordado">Bordado</option>
+    </select>
+    <main id="contenedor-productos">
+    </main>
+    <div class="modal-contenedor">
         <div class="modal-carrito">
-            <h3>Carrito</h3>
+            <h3>carrito</h3>
             <button id="carritoCerrar"><i class="fas fa-times-circle"></i></button>
             <div id="carrito-contenedor">
                 
             </div>
             <p class="precioProducto">Precio total: $<span id="precioTotal">0</span></p>
-            <button id="vaciar-carrito" class="boton-agregar">Vaciar carrito</button>
-            <button id="comprar-carrito" class="boton-agregar">comprar carrito</button>
+            <div class="botones">
+                <button id="vaciar-carrito" class="boton-vaciar">Vaciar carrito</button>
+                <button id="comprar-carrito" class="boton-Comprar">comprar carrito</button>
+            </div>
         </div>
     </div>
 <!-- Footer -->
-    <footer>
-        <div class="footer-conteiner">
-            <div class="navigation">
-
-            </div>
-            <div class="paid">
-
-            </div>
-            <div class="info">
-
-            </div>
+<footer>
+    <div class="footer-conteiner">
+        <div class="navigation">
+        </div>
+        <div class="paid">
+        </div>
+        <div class="info">
         </div>
         <p>Copyright © KEFLA 2023. All rights reserved.</p>
         <p>Website created by [Santiago Caceres]</p>
-    </footer>
-    
-    <script src="./js/modal.js"></script>
+    </div>
+</footer>
     <script src="./js/stock.js"></script>
+    <script src="./js/modal.js"></script>
     <script src="./js/cart.js"></script>
+    <script src="./js/main.js"></script>
 </body>
 </html>

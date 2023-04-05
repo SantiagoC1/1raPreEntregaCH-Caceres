@@ -6,12 +6,6 @@ header {
     box-shadow: 0px 5px 4px 3px rgba(54, 36, 36, 0.911);
     margin-bottom: 20px;
     background-color: #0E0808;
-    h1 {
-        color: #E4E0E0;
-        text-transform: uppercase;
-        font-weight: 700;
-        font-size: 50px;
-    };
     #boton-carrito {
         border: none;
         color: #745A5A;
@@ -20,20 +14,49 @@ header {
         border-radius: 50%;
         padding: 10px 20px;
         transition: all .3s;
-    };
-    #boton-carrito:hover {
+        &:hover {
         cursor: pointer;
         color: #0E0808;
         background-color: #745A5A;
-    };
-    #boton-carrito:focus {
-        outline: none;
-    };
-    #contenedor-productos {
-        max-width: 1200px;
-        margin: 60px auto;
+        }
+        &:focus {
+            outline: none;
+        }
+    }
+    .titulo {
+        font-family: dominican;
+        top: 20px;
+        right: 300px;
+        color: #E4E0E0;
+        text-transform: uppercase;
+        font-weight: 700;
+        font-size: 50px;
+    }
+    nav{
+        margin-right: 50%;
+        width: 200px;
+        float: left;
+    }
+    nav ul{
+        list-style: none;
+        margin:0;
+        padding: 0;
         display: flex;
-        justify-content: space-between;
-        flex-wrap: wrap;
-    };
+        flex-direction: row; 
+        justify-content: flex-start;
+        align-items: center;
+    }
+    nav li{ 
+        margin-bottom: 10px;
+    }
+    nav a{
+        display: block;
+        padding: 10px;
+        text-decoration: none;
+        color: #E4E0E0;
+        font-weight: bold;
+    }
+    nav a:hover{
+        background: #745A5A;
+    }
 };

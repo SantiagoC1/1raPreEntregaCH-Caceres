@@ -1,27 +1,10 @@
-const buzo = [
-    //ESTAMPADO
-    {id:1,tipo:"estampado",nombre:"bys",descripcion:"BYS-Buzo-Estampado-Canguro Unisex-KEFLA", precio:14200,stock:50,cantidad:0,img:'./assets/images/2(1).png'},
-    {id:2,tipo:"estampado",nombre:"SunFlower",descripcion:"SunFlower-Buzo-Estampado-Canguro Unisex-KEFLA", precio:15499,stock:50,cantidad:0,img:'./assets/images/3.png'},
-    {id:3,tipo:"estampado",nombre:"princess",descripcion:"Princess-Buzo-Estampado-Canguro Unisex-KEFLA", precio:13499,stock:50,cantidad:0,img:'./assets/images/5.png'},
-    {id:4,tipo:"estampado",nombre:"bluewave",descripcion:"BlueWave-Buzo -Estampado-Canguro Unisex-KEFLA", precio:15499,stock:50,cantidad:0,img:'./assets/images/8.png'},
-    {id:5,tipo:"estampado",nombre:"clow",descripcion:"Clow-Buzo-Estampado-Canguro Unisex-KEFLA", precio:14499,stock:50,cantidad:0,img:'./assets/images/19.png'},
-    {id:6,tipo:"estampado",nombre:"happycake",descripcion:"Happy Cake-Buzo -Estampado-Canguro Unisex-KEFLA", precio:15000,stock:50,cantidad:0,img:'./assets/images/16.png'},
-    {id:7,tipo:"estampado",nombre:"bekind",descripcion:"bekind-Buzo-Estampado-Canguro Unisex-KEFLA", precio:17000,stock:50,cantidad:0,img:'./assets/images/4(1).png'},
-    {id:8,tipo:"estampado",nombre:"tyv",descripcion:"Trust Your Vision-Buzo-Estampado-Canguro Unisex-KEFLA", precio:15000,stock:50,cantidad:0,img:'./assets/images/11.png'},
-    //LISO
-    {id:9,tipo:"liso",nombre:"Green",descripcion:"Green-Buzo-Liso-Canguro Unisex-KEFLA",precio:11000,stock:50,cantidad:0,img:'./assets/images/12.png'},
-    {id:10,tipo:"liso",nombre:"Red",descripcion:"Red-Buzo-Liso-Canguro Unisex-KEFLA",precio:11000,stock:50,cantidad:0,img:'./assets/images/21.png'},
-    {id:11,tipo:"liso",nombre:"Marino",descripcion:"Marino-Buzo-Liso-Canguro Unisex-KEFLA",precio:11000,stock:50,cantidad:0,img:'./assets/images/14.png'},
-    {id:12,tipo:"liso",nombre:"Blue",descripcion:"Blue-Buzo-Liso-Canguro Unisex-KEFLA",precio:11000,stock:50,cantidad:0,img:'./assets/images/15.png'},
-    {id:13,tipo:"liso",nombre:"LightBlue",descripcion:"LightBlue-Buzo-Liso-Canguro Unisex-KEFLA",precio:11000,stock:50,cantidad:0,img:'./assets/images/17.png'},
-    {id:14,tipo:"liso",nombre:"Terra",descripcion:"Terra-Buzo-Liso-Canguro Unisex-KEFLA",precio:11000,stock:50,cantidad:0,img:'./assets/images/18.png'},
-    {id:15,tipo:"liso",nombre:"Cremita",descripcion:"Cremita-Buzo-Liso-Canguro Unisex-KEFLA",precio:11000,stock:50,cantidad:0,img:'./assets/images/20.png'},
-    {id:16,tipo:"liso",nombre:"Violet",descripcion:"Violet-Buzo-Liso-Canguro Unisex-KEFLA",precio:11000,stock:50,cantidad:0,img:'./assets/images/13.png'},
-    //BORDADO
-    {id:17,tipo:"bordado",nombre:"Rose",descripcion:"Rose-Buzo-Bordado-Canguro Unisex-KEFLA", precio:14500,stock:50,cantidad:0,img:'./assets/images/2.png'},
-    {id:18,tipo:"bordado",nombre:"Thunder",descripcion:"Thunder-Buzo-Bordado-Canguro Unisex-KEFLA", precio:14500,stock:50,cantidad:0,img:'./assets/images/3(1).png'},
-    {id:19,tipo:"bordado",nombre:"Fish",descripcion:"Fish-Buzo-Bordado-Canguro Unisex-KEFLA", precio:14500,stock:50,cantidad:0,img:'./assets/images/4.png'},
-    {id:20,tipo:"bordado",nombre:"Cloud",descripcion:"Cloud-Buzo-Bordado-Canguro Unisex-KEFLA", precio:14500,stock:50,cantidad:0,img:'./assets/images/5(1).png'},
-    {id:21,tipo:"bordado",nombre:"Butterfly",descripcion:"Butterfly-Buzo-Bordado-Canguro Unisex-KEFLA", precio:14500,stock:50,cantidad:0,img:'./assets/images/1.png'},
-    {id:22,tipo:"bordado",nombre:"Crown",descripcion:"Crown-Buzo-Bordado-Canguro Unisex-KEFLA", precio:14500,stock:50,cantidad:0,img:'./assets/images/9.png'},
-];
+const traerProd = async() =>{
+    try{
+        const response = await fetch("../stock.json");
+        const stock = await response.json();
+        return stock;
+    }catch(error){
+            console.log(error);
+    }
+};
+stock=traerProd();
