@@ -1,5 +1,5 @@
 [
-    {"id":1,"tipo":"estampado","nombre":"bys","descripcion":"BYS-Buzo-Estampado-Canguro Unisex-KEFLA", "precio":14200,"stock":50,"cantidad":0,"vendidos":0,"img":"./assets/images/2(1).png"},
+    {"id":1,"tipo":"estampado","nombre":"bys","descripcion":"BYS-Buzo-Estampado-Canguro Unisex-KEFLA", "precio":14200,"stock":50,"cantidad":0,"vendidos":0,"img":"/assets/images/2(1).png"},
     {"id":2,"tipo":"estampado","nombre":"SunFlower","descripcion":"SunFlower-Buzo-Estampado-Canguro Unisex-KEFLA", "precio":15499,"stock":50,"cantidad":0,"vendidos":0,"img":"./assets/images/3.png"},
     {"id":3,"tipo":"estampado","nombre":"princess","descripcion":"Princess-Buzo-Estampado-Canguro Unisex-KEFLA", "precio":13499,"stock":50,"cantidad":0,"vendidos":0,"img":"./assets/images/5.png"},
     {"id":4,"tipo":"estampado","nombre":"bluewave","descripcion":"BlueWave-Buzo -Estampado-Canguro Unisex-KEFLA", "precio":15499,"stock":50,"cantidad":0,"vendidos":0,"img":"./assets/images/8.png"},
